@@ -17,9 +17,9 @@
 -(void)checkPush:(CDVInvokedUrlCommand *)command {
 	CDVPluginResult *pluginResult = nil;
 	if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone) {
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:false];
-	} else {
 		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
+	} else {
+		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:false];
 	}
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }

@@ -13,7 +13,7 @@
     </engines>
 
     <js-module src="www/PushHelpers.js" name="PushHelpers">
-        <clobbers target="PushHelpers" />
+        <clobbers target="window.PushHelpers" />
     </js-module>
 
     <!-- android -->

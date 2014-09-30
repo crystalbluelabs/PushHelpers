@@ -8,6 +8,8 @@ PushHelpers.prototype.isPushEnabled = function (success, failure) {
 }
 
 // Get data from a push notification passed while app is in background.
-PushHelpers.prototype.getPushData = function (success, failure) {
-	cordova.exec(success, failure, "PushHelpers", "getData", []);
+PushHelpers.prototype.checkPushData = function (success, failure) {
+	cordova.exec(success, failure, "PushHelpers", "getPushData", []);
 }
+
+module.exports = new PushHelpers();

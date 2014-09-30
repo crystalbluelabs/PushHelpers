@@ -28,7 +28,7 @@
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
         </config-file>
 
-        <source-file src="src/android/nl/xservices/plugins/PushHelpers.java" target-dir="src/nl/xservices/plugins"/>
+        <source-file src="src/android/PushHelpers.java" target-dir="src/com/crystalbluelabs/plugins/pushHelpers"/>
     </platform>          
      
      <platform name="ios">

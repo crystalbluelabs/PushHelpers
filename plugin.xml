@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="com.crystalbluelabs.pushHelpers"
+      version="0.1.0">
+    <name>PushHelpers</name>
+    <description>Cordova Push Notification Helpers</description>
+    <license>MIT</license>
+    <keywords>phonegap,background fetch, helpers</keywords>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <js-module src="www/PushHelpers.js" name="PushHelpers">
+        <clobbers target="PushHelpers" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="PushHelpers">
+            <param name="android-package" value="com.crystalbluelabs.PushHelpers" />
+          </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        </config-file>
+
+        <source-file src="src/android/nl/xservices/plugins/PushHelpers.java" target-dir="src/nl/xservices/plugins"/>
+    </platform>          
+     
+     <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="PushHelpers">
+                <param name="ios-package" value="PushHelpers"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/PushHelpers.m" />
+        <header-file src="src/ios/PushHelpers.h" />
+
+     </platform>          
+
+</plugin>

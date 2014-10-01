@@ -20,7 +20,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
           <feature name="PushHelpers">
-            <param name="android-package" value="com.crystalbluelabs.PushHelpers" />
+            <param name="android-package" value="com.crystalbluelabs.plugins.pushHelpers.PushHelpers" />
           </feature>
         </config-file>
 

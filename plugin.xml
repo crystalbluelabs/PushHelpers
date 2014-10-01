@@ -29,6 +29,7 @@
         </config-file>
 
         <source-file src="src/android/PushHelpers.java" target-dir="src/com/crystalbluelabs/plugins/pushHelpers"/>
+        <source-file src="src/android/NewsPaperPrefs.java" target-dir="src/com/crystalbluelabs/plugins/pushHelpers"/>
     </platform>          
      
      <platform name="ios">

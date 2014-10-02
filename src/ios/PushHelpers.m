@@ -15,12 +15,17 @@
 @implementation PushHelpers
 
 -(void)checkPush:(CDVInvokedUrlCommand *)command {
-	CDVPluginResult *pluginResult = nil;
-	if ([UIApplication sharedApplication].enabledRemoteNotificationTypes == UIRemoteNotificationTypeNone) {
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
-	} else {
-		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:false];
-	}
+    CDVPluginResult *pluginResult = nil;
+    UIApplication *app = [UIApplication sharedApplication];
+    BOOL enabled;
+//	if ([app respondsToSelector:@selector(isRegisteredForRemoteNotifications)]) {
+//        enabled = [app isRegisteredForRemoteNotifications];
+//		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:enabled];
+//	} else {
+        UIRemoteNotificationType types = [app enabledRemoteNotificationTypes];
+        enabled = types & UIRemoteNotificationTypeAlert;
+		pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:enabled];
+//	}
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
@@ -30,7 +35,8 @@
     //id mainDelegate = (AppDelegate *)[[UIApplication sharedApplication].delegate];
     NSDictionary *pushedInfo = [MY_DELEGATE pushInfo];
     
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:pushedInfo];
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:pushedInfo[@"alert"]];
+    //pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"test"];
     
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }

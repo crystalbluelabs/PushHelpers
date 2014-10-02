@@ -29,3 +29,10 @@ For android, the following function in PushReceiver.java must be modified.
             handleRegistrationFinished(intent);
         }
     }
+
+For iOS add the following delegate method to your main appDelegate.m
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler NS_AVAILABLE_IOS(7_0) {
+    NSLog(@"Push notification handed off data after resume from background.");
+    self.pushInfo = userInfo[@"aps"];
+}
